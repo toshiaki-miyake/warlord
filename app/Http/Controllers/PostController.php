@@ -33,6 +33,7 @@ class PostController extends Controller
         $post = new Post();
         $post->title = $request->title;
         $post->body = $request->body;
+        $post->deadline = $request->deadline;
         $post->save();
 
         return redirect()
@@ -49,6 +50,7 @@ class PostController extends Controller
     {
         $post->title = $request->title;
         $post->body = $request->body;
+        $post->deadline = $request->deadline;
         $post->save();
 
         return redirect()

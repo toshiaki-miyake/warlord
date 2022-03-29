@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Test2 extends Migration
+class AddDeadlineColumnToCommentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class Test2 extends Migration
      */
     public function up()
     {
-        Schema::create('test2-t', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::table('comments', function (Blueprint $table) {
+            $table->string('deadline');
         });
     }
 
@@ -26,6 +25,8 @@ class Test2 extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('test2-t');
+        Schema::table('comments', function (Blueprint $table) {
+            $table->string('deadline');
+        });
     }
 }

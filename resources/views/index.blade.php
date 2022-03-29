@@ -1,11 +1,11 @@
 <x-layout>
     <x-slot name="title">
-        My BBS
+        Taskun
     </x-slot>
 
     <h1>
-        <span>My BBS</span>
-        <a href="{{ route('posts.create') }}">[Add]</a>
+        <span>Taskun</span>
+        <a href="{{ route('posts.create') }}">&raquo; 新規作成</a>
     </h1>
     <ul>
         @forelse ($posts as $post)
