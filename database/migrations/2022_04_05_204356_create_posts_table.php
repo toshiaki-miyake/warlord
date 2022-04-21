@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class DropColumnCommentsColumn extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,12 @@ class DropColumnCommentsColumn extends Migration
      */
     public function up()
     {
-        Schema::table('comments', function (Blueprint $table) {
-            $table->dropColumn('deadline');
+        Schema::create('posts', function (Blueprint $table) {
+            $table->id();
+            $table->string('title');
+            $table->text('body');
+            $table->integer('priority');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +29,6 @@ class DropColumnCommentsColumn extends Migration
      */
     public function down()
     {
-        Schema::table('comments', function (Blueprint $table) {
-            $table->boolean('deadline')->default(false);
-        });
+        Schema::dropIfExists('posts');
     }
-}
+};

@@ -1,48 +1,44 @@
+
 <x-layout>
     <x-slot name="title">
-        編集 - Taskun
+        Edit Post - My BBS
     </x-slot>
-
     <div class="back-link">
         &laquo; <a href="{{ route('posts.show', $post) }}">戻る</a>
     </div>
-
-    <h1>編集</h1>
-
+    <h1>Edit Post</h1>
     <form method="post" action="{{ route('posts.update', $post) }}">
         @method('PATCH')
         @csrf
-
-        <div class="form-group">
+        <div class="form-grouop">
             <label>
-                タイトル
+                Title
                 <input type="text" name="title" value="{{ old('title', $post->title) }}">
             </label>
             @error('title')
                 <div class="error">{{ $message }}</div>
             @enderror
         </div>
-        <div class="form-group">
+        <div class="form-grouop">
             <label>
-                詳細
+                Body
                 <textarea name="body">{{ old('body', $post->body) }}</textarea>
+                @error('body')
+                    <div class="error">{{ $message }}</div>
+                @enderror
             </label>
-            @error('body')
-                <div class="error">{{ $message }}</div>
-            @enderror
         </div>
-
-        <div class="form-group">
+        <div class="form-grouop">
             <label>
-                期限日
-                <input type="text" name="deadline" value="{{ old('deadline') }}">
+                Priority
+                <input type="number" name="priority" value="{{ old('priority', $post->priority) }}">
+                @error('priority')
+                    <div class="error">{{ $message }}</div>
+                @enderror
             </label>
-            @error('deadline')
-                <div class="error">{{ $message }}</div>
-            @enderror
         </div>
         <div class="form-button">
-            <button>更新</button>
+            <button>Update</button>
         </div>
     </form>
 </x-layout>

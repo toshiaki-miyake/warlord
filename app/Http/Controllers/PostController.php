@@ -10,47 +10,43 @@ class PostController extends Controller
 {
     public function index()
     {
-        $posts = Post::latest()->get();
+        // $posts = Post::all();
+        // $posts = Post::latest()->get();
+        $posts = Post::all()->sortBy('priority');
 
         return view('index')
             ->with(['posts' => $posts]);
     }
-
-    // Implicit Binding
     public function show(Post $post)
     {
         return view('posts.show')
             ->with(['post' => $post]);
     }
-
     public function create()
     {
         return view('posts.create');
     }
-
     public function store(PostRequest $request)
     {
         $post = new Post();
         $post->title = $request->title;
         $post->body = $request->body;
-        $post->deadline = $request->deadline;
+        $post->priority = $request->priority;
         $post->save();
 
         return redirect()
             ->route('posts.index');
     }
-
     public function edit(Post $post)
     {
         return view('posts.edit')
             ->with(['post' => $post]);
     }
 
-    public function update(PostRequest $request, Post $post)
-    {
+    public function update(PostRequest $request, Post $post) {
         $post->title = $request->title;
         $post->body = $request->body;
-        $post->deadline = $request->deadline;
+        $post->priority = $request->priority;
         $post->save();
 
         return redirect()
@@ -60,7 +56,6 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         $post->delete();
-
         return redirect()
             ->route('posts.index');
     }

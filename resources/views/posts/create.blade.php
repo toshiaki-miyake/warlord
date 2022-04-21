@@ -1,46 +1,44 @@
+
 <x-layout>
     <x-slot name="title">
-        新規作成 - Taskun
+        Add New Post - My BBS
     </x-slot>
-
     <div class="back-link">
         &laquo; <a href="{{ route('posts.index') }}">戻る</a>
     </div>
-
-    <h1>新規作成</h1>
-
-    <form method="post" action="{{ route('posts.store') }}">
+    <h1>Add New Post</h1>
+    <form method="post" action="{{ route('posts.store')}}">
         @csrf
-
-        <div class="form-group">
+        <div class="form-grouop">
             <label>
-                タイトル
+                Title
                 <input type="text" name="title" value="{{ old('title') }}">
             </label>
             @error('title')
                 <div class="error">{{ $message }}</div>
             @enderror
         </div>
-        <div class="form-group">
+        <div class="form-grouop">
             <label>
-                詳細
+                Body
                 <textarea name="body">{{ old('body') }}</textarea>
+                @error('body')
+                    <div class="error">{{ $message }}</div>
+                @enderror
             </label>
-            @error('body')
-                <div class="error">{{ $message }}</div>
-            @enderror
         </div>
-        <div class="form-group">
+        <div class="form-grouop">
             <label>
-                期限日
-                <input type="text" name="deadline" value="{{ old('deadline') }}">
+                Priority
+                <input type="number" name="priority" value="{{ old('priority') }}">
+                @error('priority')
+                    <div class="error">{{ $message }}</div>
+                @enderror
             </label>
-            @error('deadline')
-                <div class="error">{{ $message }}</div>
-            @enderror
         </div>
         <div class="form-button">
-            <button>追加</button>
+            <button>Add</button>
         </div>
+
     </form>
 </x-layout>

@@ -28,7 +28,6 @@ class PostRequest extends FormRequest
             'body' => 'required',
         ];
     }
-
     public function messages()
     {
         return [

@@ -11,7 +11,7 @@ class CommentController extends Controller
     public function store(Request $request, Post $post)
     {
         $request->validate([
-            'body' => 'required',
+            'body' => 'required'
         ]);
 
         $comment = new Comment();
@@ -22,7 +22,6 @@ class CommentController extends Controller
         return redirect()
             ->route('posts.show', $post);
     }
-
     public function destroy(Comment $comment)
     {
         $comment->delete();
