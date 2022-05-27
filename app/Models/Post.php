@@ -13,6 +13,7 @@ class Post extends Model
         'title',
         'body',
         'priority',
+        'deadline',
     ];
 
     // $post->comments

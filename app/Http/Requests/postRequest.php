@@ -26,6 +26,8 @@ class PostRequest extends FormRequest
         return [
             'title' => 'required|min:3',
             'body' => 'required',
+            'priority' => 'required',
+            'deadline' => 'required|min:8',
         ];
     }
     public function messages()
@@ -34,6 +36,9 @@ class PostRequest extends FormRequest
             'title.required' => 'タイトルは必須です',
             'title.min' => ':min 文字以上入力してください',
             'body.required' => '本文は必須です',
+            'priority.required' => '優先順位を入力してください',
+            'deadline.required' => '本文は必須です',
+            'deadline.min' => '入力した日付が正しくありません',
         ];
     }
 }

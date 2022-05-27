@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+$inner : 1000px;
+@mixin media($media) {
+    @if( $media == pc ){
+        @media screen and ( min-width: 768px ) {
+            @content;
+        }
+    } @else if( $media == tab ) {
+        @media screen and ( min-width: 768px ) and ( max-width: $inner) {
+            @content;
+        }
+    } @else if( $media == spIpPlus ) {
+        @media screen and ( min-width: 414px ) and ( max-width: 767px ) {
+            @content;
+        }
+    } @else if( $media == sp ) {
+        @media screen and ( max-width: 767px ) {
+            @content;
+        }
+    } @else if( $media == spIp5 ) {
+        @media screen and ( max-width: 320px ) {
+            @content;
+        }
+    } @else {
+        @media screen and ($media) {
+            @content;
+        }
+    }
+}
