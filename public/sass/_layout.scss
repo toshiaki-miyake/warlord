@@ -70,12 +70,12 @@ button {
 
 // common --------------------
 .header {
-    //   height: 60px;
     padding: 10px 0;
     border-bottom: 2px solid #d3d3d3;
     .inner {
-        max-width: 600px;
+        max-width: 660px;
         margin: 0 auto;
+        padding: 0 30px;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -99,7 +99,7 @@ button {
 }
 
 main {
-    max-width: 600px;
+    max-width: 660px;
     margin: 30px auto 0;
     padding: 0 30px;
     > div {

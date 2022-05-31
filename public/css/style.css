@@ -164,8 +164,9 @@ button {
   border-bottom: 2px solid #d3d3d3;
 }
 .header .inner {
-  max-width: 600px;
+  max-width: 660px;
   margin: 0 auto;
+  padding: 0 30px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -191,7 +192,7 @@ button {
 }
 
 main {
-  max-width: 600px;
+  max-width: 660px;
   margin: 30px auto 0;
   padding: 0 30px;
 }
