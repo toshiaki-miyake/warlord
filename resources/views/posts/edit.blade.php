@@ -1,3 +1,13 @@
+@if (Route::has('login'))
+@auth
+@else
+<?php
+    http_response_code( 301 );
+    header( "Location: /" );
+    exit;
+?>
+@endauth
+@endif
 <x-layout>
     <x-slot name="title">
         Edit Post - My BBS
@@ -110,7 +120,7 @@
                         let deadlineDateY = deadlineDate.substr(0, 4);
                         let deadlineDateM = deadlineDate.substr(4, 2);
                         let deadlineDateD = deadlineDate.substr(6, 2);
-                        let deadlineNewDate = new Date(deadlineDateY, deadlineDateM - 1, deadlineDateD);
+                        let deadlineNewDate = new Date(deadlineDateY, deadlineDateM - 1, deadlineDateD, 23, 59, 59, 999);
 
                         let deadlineGetM = ('00' + (deadlineNewDate.getMonth() + 1)).slice(-2);
                         // 存在する日付かチェック

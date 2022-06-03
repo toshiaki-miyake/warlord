@@ -105,11 +105,13 @@
                         let deadlineDateY = deadlineDate.substr(0, 4);
                         let deadlineDateM = deadlineDate.substr(4, 2);
                         let deadlineDateD = deadlineDate.substr(6, 2);
-                        let deadlineNewDate = new Date(deadlineDateY, deadlineDateM - 1, deadlineDateD);
+                        let deadlineNewDate = new Date(deadlineDateY, deadlineDateM - 1, deadlineDateD, 23, 59, 59, 999);
 
                         let deadlineGetM = ('00' + (deadlineNewDate.getMonth() + 1)).slice(-2);
                         // 存在する日付かチェック
                         if(deadlineDateM === deadlineGetM){
+                            console.log(currentNewDate);
+                            console.log(deadlineNewDate);
                             if(currentNewDate > deadlineNewDate){
                                 e.preventDefault();
                                 if(elemFormGroup[3].getElementsByTagName('p')[0] === undefined){

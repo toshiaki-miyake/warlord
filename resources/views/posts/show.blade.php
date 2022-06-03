@@ -9,6 +9,8 @@
             </div>
         </div>
         <div class="cont">
+            @if (Route::has('login'))
+            @auth
             <div class="head">
                 <a href="{{ route('posts.edit', $post) }}" class="btn edit">編集</a>
                 <form method="post" action="{{ route('posts.destroy', $post) }}" id="delete_post">
@@ -18,6 +20,8 @@
                     <button class="delete">×</button>
                 </form>
             </div>
+            @endauth
+            @endif
             <ul>
                 <li>
                     <h3>タイトル</h3>
@@ -35,46 +39,54 @@
                     <h3>期限</h3>
                     <p>{{ $post->deadline }}</p>
                 </li>
+                <li class="comment">
+                    <h3>コメント</h3>
+                    @if (Route::has('login'))
+                    @auth
+                    <form method="post" action="{{ route('comments.store', $post) }}" class="comment-form">
+                        @csrf
+
+                        <textarea name="body"></textarea>
+                        <button class="btn positive" id="confirm">追加</button>
+                    </form>
+                    @endauth
+                    @endif
+                    <ul>
+                        @foreach ($post->comments()->latest()->get() as $comment)
+                            <li>
+                                <span>{!! nl2br(e($comment->body)) !!}</span>
+                                @if (Route::has('login'))
+                                @auth
+                                <form method="post" action="{{ route('comments.destroy', $comment) }}" class="delete-comment">
+                                    @method('DELETE')
+                                    @csrf
+
+                                    <button class="close-btn">[x]</button>
+                                </form>
+                                @endauth
+                                @endif
+                            </li>
+                        @endforeach
+                    </ul>
+                </li>
             </ul>
-            <div class="comment">
-                <h3>コメント</h3>
-                <ul>
-                    <li>
-                        <form method="post" action="{{ route('comments.store', $post) }}" class="comment-form">
-                            @csrf
-
-                            <textarea name="body"></textarea>
-                            <button class="btn positive" id="confirm">追加</button>
-                        </form>
-                    </li>
-                    @foreach ($post->comments()->latest()->get() as $comment)
-                        <li>
-                            {!! nl2br(e($comment->body)) !!}
-                            <form method="post" action="{{ route('comments.destroy', $comment) }}" class="delete-comment">
-                                @method('DELETE')
-                                @csrf
-
-                                <button class="btn">[x]</button>
-                            </form>
-                        </li>
-                    @endforeach
-                </ul>
-            </div>
         </div>
     </div>
 
     <script>
-        document.getElementById('delete_post').addEventListener('submit', e => {
-            e.preventDefault();
+        if(!!document.getElementById('delete_post')){
+            document.getElementById('delete_post').addEventListener('submit', e => {
+                e.preventDefault();
 
-            if (!confirm('削除してよろしいでしょうか?')) {
-                return;
-            }
+                if (!confirm('削除してよろしいでしょうか?')) {
+                    return;
+                }
 
-            e.target.submit();
-        });
+                e.target.submit();
+            });
+        };
 
-        document.querySelectorAll('.delete-comment').forEach(form => {
+        document.querySelectorAll('li .delete-comment').forEach(form => {
             form.addEventListener('submit', e => {
                 e.preventDefault();
                 if (!confirm('削除してよろしいでしょうか?')) {

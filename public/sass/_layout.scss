@@ -15,7 +15,7 @@ body {
     word-wrap: break-word;
     height: 100%;
     @include media(sp) {
-        font-size: 2.8rem;
+        // font-size: 2.8em;
     }
 }
 a {
@@ -96,6 +96,18 @@ button {
             }
         }
     }
+    .logout {
+        text-align: right;
+        .name {
+            font-size: 1.6rem;
+        }
+        a {
+            color: #000;
+        }
+        form {
+            // line-height: 1;
+        }
+    }
 }
 
 main {
@@ -162,10 +174,32 @@ main {
                     display: inline-block;
                     font-size: 1.6rem;
                 }
+                .title {
+                    width: calc(100% - 182px);
+
+                    @include media(pc) {
+                    }
+                    @include media(sp) {
+
+                    }
+                }
                 .wrap {
+                    width: 182px;
+                    @include media(pc) {
+                    }
+                    @include media(sp) {
+
+                    }
+
                     .priority {
-                        width: 80px;
                         padding-left: 7px;
+                        width: 80px;
+                        @include media(pc) {
+
+                        }
+                        @include media(sp) {
+
+                        }
                     }
                     .deadline {
                         width: 96px;
@@ -179,6 +213,12 @@ main {
                     justify-content: space-between;
                     margin: 10px 0;
                     color: #333;
+                    @include media(pc) {
+                        flex-wrap: wrap;
+                    }
+                    @include media(sp) {
+
+                    }
                     .title {
                     }
 
@@ -204,7 +244,11 @@ main {
                 }
                 h3 {
                     padding-bottom: 2px;
-                    border-bottom: 2px solid #d3d3d3;
+                }
+                &:not(.comment) {
+                    h3 {
+                        border-bottom: 2px solid #d3d3d3;
+                    }
                 }
                 p {
                     margin: 5px 0 0 0;
@@ -219,7 +263,24 @@ main {
             height: 24px;
             border: 1px solid #333;
             color: #333;
-            font-size: 24px;
+            font-size: 2.4rem;
+        }
+        .comment {
+            margin-top: 25px;
+            h3 {
+                font-size: 1.6rem;
+            }
+            ul {
+                margin-top: 10px;
+            }
+            li {
+                display: flex;
+                align-items: center;
+            }
+            .close-btn {
+                padding: 0 10px;
+                font-size: 1.6rem;
+            }
         }
         .comment-form {
             textarea {
@@ -235,13 +296,6 @@ main {
                 margin: 20px auto 0;
             }
         }
-        .comment {
-            margin-top: 25px;
-            h3 {
-                font-size: 1.6rem;
-            }
-        }
-
     }
     .create, .edit {
         .form-group {

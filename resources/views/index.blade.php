@@ -3,9 +3,15 @@
         My BBS
     </x-slot>
     <div class="home">
-        <div class="head">
-            <a href="{{ route('posts.create') }}" class="btn positive">追加する</a>
-        </div>
+        @if (Route::has('login'))
+        @auth
+            <div class="head">
+                <a href="{{ route('posts.create') }}" class="btn positive">追加する</a>
+            </div>
+        {{-- @else --}}
+
+        @endauth
+        @endif
         <div class="cont">
             <div class="head">
                 <h3>タイトル</h3>
