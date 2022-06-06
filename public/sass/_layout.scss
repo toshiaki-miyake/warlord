@@ -23,7 +23,7 @@ a {
     transition: .4s;
     &:hover {
         @include media(pc) {
-            opacity: 0.8;
+            // opacity: 0.8;
         }
     }
 }
