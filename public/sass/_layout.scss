@@ -15,7 +15,7 @@ body {
     word-wrap: break-word;
     height: 100%;
     @include media(sp) {
-        // font-size: 2.8em;
+        font-size: 2.8em;
     }
 }
 a {
@@ -23,7 +23,7 @@ a {
     transition: .4s;
     &:hover {
         @include media(pc) {
-            // opacity: 0.8;
+            opacity: 0.8;
         }
     }
 }

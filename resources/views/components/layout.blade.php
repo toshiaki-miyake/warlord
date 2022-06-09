@@ -8,7 +8,7 @@
 <body>
     <header class="header">
         <div class="inner">
-            <h1><a href="/"><img src="/img/warload.png"></a></h1>
+            <h1><a href="{{ url('/') }}"><img src="{{ url('/img/warload.png') }}"></a></h1>
             <ul>
                 <li>
                     @if (Route::has('login'))
@@ -30,9 +30,9 @@
                                 </form>
                         {{-- </nav> --}}
                     @else
-                        <a href="{{ route('login') }}" class="">ログイン</a>
+                        <a href="{{ route('login') }}">ログイン</a>
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="">サインアップ</a>
+                            <a href="{{ route('register') }}">サインアップ</a>
                         @endif
                     @endauth
                     </div>
