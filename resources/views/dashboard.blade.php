@@ -1,8 +1,3 @@
-<?php
-    http_response_code( 301 );
-    header( "Location: /" );
-    exit;
-?>
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
