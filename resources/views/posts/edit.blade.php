@@ -10,7 +10,7 @@
 @endif
 <x-layout>
     <x-slot name="title">
-        Edit Post - My BBS
+        Edit Post - WARLOAD
     </x-slot>
 
     <div class="edit">

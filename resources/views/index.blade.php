@@ -1,7 +1,6 @@
 <x-layout>
-    <x-slot name="title">
-        My BBS
-    </x-slot>
+    <x-slot name="title">WARLOAD</x-slot>
+
     <div class="home">
         @if (Route::has('login'))
         @auth
@@ -51,7 +50,7 @@
             deadlineDateY = deadlineDate.substr(0, 4);
             deadlineDateM = deadlineDate.substr(5, 2);
             deadlineDateD = deadlineDate.substr(8, 2);
-            datelineNewDate = new Date(deadlineDateY, deadlineDateM - 1, deadlineDateD);
+            datelineNewDate = new Date(deadlineDateY, deadlineDateM - 1, deadlineDateD, 23, 59, 59, 999);
             currentNewDate = new Date();
             if(datelineNewDate < currentNewDate){
                 elemDeadline[i].classList.add('heat');

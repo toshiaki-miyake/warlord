@@ -1,6 +1,6 @@
 <x-layout>
     <x-slot name="title">
-        {{ $post->title }} - My BBS
+        {{ $post->title }} - WARLOAD
     </x-slot>
     <div class="show">
         <div class="head">
